@@ -1,11 +1,15 @@
-.App {
-  text-align: center;
+html, body {
+  margin: 0;
+  background-color: #282c34;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -14,25 +18,54 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
-    transform: rotate(0deg);
+    transform: rotate(0deg);  
   }
   to {
-    transform: rotate(360deg);
+    transform: rotate(1000deg);
   }
 }
+
+.App-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: calc(100vh - 60px); /* 假设 .App-header 的高度是60px */
+  padding: 20px;
+}
+
+/* 可选：为 Sidebar 和 Article 设置不同的宽度 */
+.sidebar {
+  flex: 0 0 200px; /* 固定宽度200px */
+}
+
+.article {
+  flex: 1; /* 占据剩余空间 */
+}
+
+
+@media (max-width: 1029px) {
+  .App {
+    display: flex;
+    flex-direction: column;
+  }
+  .App-header {
+    height: 60px;
+  }
+
+  .App-main {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+

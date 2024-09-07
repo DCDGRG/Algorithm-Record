@@ -1,23 +1,43 @@
-import logo from './logo.svg';
+import React from 'react';
+import { useState } from 'react'
 import './App.css';
+import Title from "./components/title";
+import Sidebar from "./components/sidebar";
+import Article from "./components/article";
 
 function App() {
+
+  const [titleText, setTitleText] = useState('MostViewed - Day');
+  const handleTitleChange = (newTitle) => {
+    setTitleText(newTitle);
+  }
+
+  const[sort, setSort] = useState("MostViewed");
+  const[time, setTime] = useState("1");
+  const handleSortChange = (newSort) => {
+    setSort(newSort);
+  }
+  const handleTimeChange = (newTime) => {
+    setTime(newTime);
+  }
+
+  const [articleNum, setArticleNum] = useState(1);
+  const handleArticleChange = (newArticle) => {
+    setArticleNum(newArticle);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+
+        <Title title={titleText}/>
+      
       </header>
+
+      <main className="App-main">
+        <Sidebar onTitleChange={handleTitleChange} onSortChange={handleSortChange} onTimeChange={handleTimeChange} onNumChange={handleArticleChange}/>
+        <Article sort = {sort} time = {time} articleNum={articleNum}/>
+      </main>
     </div>
   );
 }
